@@ -1,17 +1,36 @@
-import './login.css'; // Import the CSS for the Login component
+import React, { useState } from "react";
+import "./login.css";
+import FloatingLabelInput from "../FloatingLabel/floatingLabelInput.jsx";
 
 function Login() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Username: ", username);
+    console.log("Password: ", password);
+  };
+
   return (
     <div className="login-container">
       <h2>Login</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="input-group">
-          <label>Username:</label>
-          <input type="text" name="username" />
+          <FloatingLabelInput
+            label="Username"
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
         </div>
         <div className="input-group">
-          <label>Password:</label>
-          <input type="password" name="password" />
+          <FloatingLabelInput
+            label="Username"
+            type="text"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </div>
         <button type="submit">Login</button>
       </form>
